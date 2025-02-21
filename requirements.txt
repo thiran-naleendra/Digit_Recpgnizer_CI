@@ -1,0 +1,15 @@
+jupyter
+pip
+attrs
+wheel
+Pillow
+tornado
+Jinja2
+setuptools
+packaging
+pyparsing
+future
+numpy
+pywebview
+tensorflow
+Flask

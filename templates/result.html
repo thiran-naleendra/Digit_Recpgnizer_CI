@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            text-align: center;
+        }
+
+        .header {
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: #2d3748;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .result-content {
+            margin: 30px 0;
+        }
+
+        .result-text {
+            font-size: 1.25rem;
+            color: #4a5568;
+            margin-bottom: 20px;
+        }
+
+        .predicted-digit {
+            font-size: 4rem;
+            font-weight: 700;
+            color: #667eea;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 15px;
+            display: inline-block;
+        }
+
+        .error-message {
+            color: #e53e3e;
+            font-weight: 500;
+            padding: 15px;
+            background: rgba(229, 62, 62, 0.1);
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .back-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            padding: 15px 40px;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            color: white;
+            text-decoration: none;
+        }
+
+        .back-btn:active {
+            transform: translateY(0);
+        }
+
+        .back-btn i {
+            margin-right: 8px;
+        }
+
+        @media (max-width: 640px) {
+            .card {
+                padding: 25px;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .predicted-digit {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="header">
+                <h1>Prediction Result</h1>
+            </div>
+
+            <div class="result-content">
+                {% if digit is not none %}
+                    <p class="result-text">The predicted digit is:</p>
+                    <div class="predicted-digit">{{ digit }}</div>
+                {% elif error_message %}
+                    <div class="error-message">
+                        <i class="fas fa-exclamation-circle"></i>
+                        {{ error_message }}
+                    </div>
+                {% endif %}
+            </div>
+
+            <a href="/" class="back-btn">
+                <i class="fas fa-arrow-left"></i>
+                Try Another Image
+            </a>
+        </div>
+    </div>
+</body>
+</html>
